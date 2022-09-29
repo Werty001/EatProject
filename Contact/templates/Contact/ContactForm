@@ -1,0 +1,22 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+
+
+	{% if form.errors %}
+	<p style="color : red;"> Pleace watch this! May have errors</p>
+	{% endif%}
+
+	<form action="" method="POST" style="text-align: center;">{% csrf_token %}
+		<div class="contentForm">
+			<h1 style="padding: 10px">Contact us</h1>
+			<table style="color: white; margin: 20px auto;">
+				{{form.as_table}}
+			</table>
+			<input type="submit" value="Send" style="width: 150px">
+		</div>
+	</form>
+</body>
+{% endblock %}

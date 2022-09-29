@@ -1,0 +1,7 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Heading -->
+
+
+{% endblock %}

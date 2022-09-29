@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	Hi!, {{username}}<br />
+	Order number:{{order.id}}<br />
+	User email: {{order.user.email}}<br />
+	Items in your order:
+	<table class="table table-borderless"
+		style="background-color:rgb(24, 64, 8);color: white;border-radius: 10%; margin-top: auto; width: 60%;">
+		<thead>
+			<tr>
+				<th>
+					Order Items
+				</th>
+			</tr>
+			<tr class="text-center">
+				<th>Name</th>
+				<th>Unid.</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for orderline in order_lines %}
+			<tr class="text-center">
+				<th>{{orderline.item.name}}</th>
+				<th>{{orderline.units}}</th>
+			</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+		</tfoot>
+	</table>
+
+</body>
+
+</html>

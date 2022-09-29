@@ -1,0 +1,50 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Cart seccion -->
+<div style="float: right;">
+	{% if request.user.is_authenticated %}
+	{% if request.session.cart.items %}
+	{% include "cart/widget.html" %}
+	{% endif %}
+	{% endif %}
+</div>
+{% if request.user.is_authenticated %}
+{%else%}
+<div class="alert alert-warning" role="alert">Login required to see the cart</div>
+{% endif %}
+<!-- Items cards listing -->
+<div class="row" style="padding: 10px 10px;">
+	{% for item in items %}
+	<!-- ITEM CARDS -->
+	<div class="col-md-3" style="padding: 1%;">
+		<div class="card" style="background-color:rgba(24, 64, 8); padding: 5% 5%;">
+			<!-- ITEM IMAGE -->
+			<img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{item.image.url}}" alt="">
+			<h2 class="section-heading mb-4">
+				<span class="section-heading-upper text-center" style="padding: 5%;">{{item.name}}</span>
+			</h2>
+			<!-- ITEM INFO -->
+			<p class="mb-3" style="color: white;">Price: {{item.price}} USD</p>
+			<p class="mb-3" style="color: white;">Owner: {{item.owner}}</p>
+			<p class="mb-3" style="color: white;">Categorie: {{item.categories.name}}</p>
+			<p class="mb-3" style="color: white;">{{item.content}}</p>
+			<!-- ADD BUTTON -->
+			<div class="cart-footer text-center">
+				<a style="width:45%;" href="{% url 'cart:add' item.id %}" class="btn btn-success">Add</a>
+				<a style="width:45%;" href="{% url 'cart:remove' item.id %}" class="btn btn-success">Remove</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+<div style="width: 60%; margin: auto; text-align: center; color: white; ">
+	Categories:
+	{% for item in items %}
+	{% for categorie in item.categories.all %}
+	<a href="{% url 'categorie' categorie.id %}" class="linkCategories">{{categorie.name}}</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	{% endfor %}
+	{% endfor %}
+
+	{% endblock %}

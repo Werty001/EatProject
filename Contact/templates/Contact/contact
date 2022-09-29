@@ -1,0 +1,22 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+	<title style="color: white; ">Formulario de contacto</title>
+</head>
+
+<body>
+	<h1 style="color: white; margin: auto; width: 50%;">Formulario de contacto</h1>
+
+	<form action="/contact/" method="POST">{% csrf_token %}
+		<p style="color: white;margin: auto; width: 50%;">Asunto: <input type="text" name="asunto"></p>
+		<p style="color: white;margin: auto; width: 50%;">Email: <input type="text" name="mail"></p>
+		<p style="color: white;margin: auto; width: 50%;">Mensaje: <textarea name="mesage" rows="15" cols="40"></textarea>
+		</p>
+		<input type="submit" value="Send">
+	</form>
+
+</body>
+
+{% endblock %}

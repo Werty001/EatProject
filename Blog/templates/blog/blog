@@ -1,0 +1,34 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Heading -->
+{% for post in posts %}
+
+<section class="page-section clearfix">
+	<div class="container">
+		<div class="intro">
+			<img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.image.url}}" alt="">
+			<div class="intro-text left-0 text-center bg-faded p-5 rounded">
+				<h2 class="section-heading mb-4">
+					<span class="section-heading-upper">{{post.title}}</span>
+				</h2>
+				<p class="mb-3">Owner: {{post.owner}}</p>
+				<p class="mb-3">Categorie: {{post.categories.name}}</p>
+				<p class="mb-3">{{post.content}}</p>
+
+			</div>
+		</div>
+	</div>
+</section>
+{% endfor %}
+<section>
+	<div style="width: 60%; margin: auto; text-align: center; color: white; ">
+		Categories:
+		{% for post in posts %}
+		{% for categorie in post.categories.all %}
+		<a href="{% url 'categorie' categorie.id %}" class="linkCategories">{{categorie.name}}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+		{% endfor %}
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}

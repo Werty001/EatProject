@@ -1,0 +1,13 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+	<title style="color: white; size: 40;">Gracias</title>
+</head>
+
+<body>
+	<h1 style="color: white; size: 12cm ; margin: auto; width: 50%;">Gracias por enviarnos tu informacion desde
+		{{request.POST.email}}</h1>
+</body>
+{% endblock %}

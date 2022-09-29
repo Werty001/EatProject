@@ -1,0 +1,25 @@
+{% extends "FullWeb/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Heading -->
+{% for service in services %}
+
+<section class="page-section clearfix">
+	<div class="container">
+		<div class="intro">
+			<img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{service.image.url}}" alt="">
+			<div class="intro-text left-0 text-center bg-faded p-5 rounded">
+				<h1 class="section-heading mb-4">
+					<span class="section-heading-upper">{{service.title}}</span>
+				</h1>
+				<p class="mb-3">{{service.contenido}}
+				</p>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endfor %}
+
+{% endblock %}
